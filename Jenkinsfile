@@ -5,9 +5,8 @@ php /usr/local/bin/composerpipeline {
 			steps {
 				sh 'apt-get update'
                        		sh 'apt-get install -y php-cli php-mbstring unzip '     
-				sh 'curl -sS https://getcomposer.org/installer'
-				sh 'php -- --install-dir=/usr/local/bin --filename=composer'
-				sh 'php /usr/local/bin/composer install'
+				sh 'curl -sS https://getcomposer.org/installer|php -- --install-dir=/usr/local/bin --filename=composer'
+				sh 'composer --version'
 			}
 		}
 		stage('Test') {
