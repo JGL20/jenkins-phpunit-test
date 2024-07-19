@@ -10,9 +10,16 @@ pipeline {
 			}
 		}
 		stage('Test') {
-			steps {
-                	   sh './vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
-            		}
-		}
+    steps {
+        script {
+            // Verify PHPUnit is installed
+            sh 'php --version'
+            sh 'phpunit --version'
+
+            // Run tests
+            sh 'php vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
+        }
+    }
+}
 	}
 }
