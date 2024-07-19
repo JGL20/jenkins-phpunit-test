@@ -1,4 +1,4 @@
-pipeline {
+php /usr/local/bin/composerpipeline {
 	agent any
 	stages {
 		stage('Build') {
@@ -7,7 +7,7 @@ pipeline {
                        		sh 'apt-get install -y php-cli php-mbstring unzip '     
 				sh 'curl -sS https://getcomposer.org/installer'
 				sh 'php -- --install-dir=/usr/local/bin --filename=composer'
-				sh 'composer install'
+				sh 'php /usr/local/bin/composer install'
 			}
 		}
 		stage('Test') {
