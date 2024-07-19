@@ -7,6 +7,7 @@ pipeline {
                        		sh 'apt-get install -y php-cli php-mbstring unzip '     
 				sh 'curl -sS https://getcomposer.org/installer|php -- --install-dir=/usr/local/bin --filename=composer'
 				sh 'composer --version'
+				sh 'ls -la vendor/bin'  // List contents of vendor/bin to confirm PHPUnit is there
 			}
 		}
 		stage('Test') {
