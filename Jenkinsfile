@@ -8,6 +8,7 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
+				 script {
 				//sh 'composer install'
 		sh 'docker run --rm -v $PWD:/app -w /app composer:latest composer install'
                 }
