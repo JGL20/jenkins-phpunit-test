@@ -1,5 +1,5 @@
 pipeline {
-	    agent {
+agent {
         docker {
             image 'composer:latest'
             args '-v /path/to/project:/app'
