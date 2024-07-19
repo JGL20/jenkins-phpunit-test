@@ -13,8 +13,11 @@ pipeline {
 		stage('Test') {
     steps {
        script {
-                    // Run tests
-                    sh 'php /usr/local/bin/composer --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
+                    // Check PHPUnit version
+                    sh 'php ./vendor/bin/phpunit --version'
+
+                    // Run PHPUnit tests
+                    sh 'php ./vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
                 }
     }
 }
