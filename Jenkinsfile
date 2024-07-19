@@ -11,14 +11,13 @@ pipeline {
 		}
 		stage('Test') {
     steps {
-        script {
-            // Verify PHPUnit is installed
-            sh 'php --version'
-            sh 'phpunit --version'
+       script {
+                    // Check PHPUnit version
+                    sh './vendor/bin/phpunit --version'
 
-            // Run tests
-            sh 'php vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
-        }
+                    // Run tests
+                    sh './vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
+                }
     }
 }
 	}
