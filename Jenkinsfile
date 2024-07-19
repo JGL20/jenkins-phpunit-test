@@ -1,4 +1,4 @@
-php /usr/local/bin/composerpipeline {
+pipeline {
 	agent any
 	stages {
 		stage('Build') {
