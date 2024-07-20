@@ -1,25 +1,19 @@
 pipeline {
-	agent any
+	agent {
+docker {
+image ‘composer:latest’
+}
+}
 	stages {
 		stage('Build') {
 			steps {
-				sh 'apt-get update'
-                       		sh 'apt-get install -y php-cli php-mbstring unzip '     
-				sh 'curl -sS https://getcomposer.org/installer|php -- --install-dir=/usr/local/bin --filename=composer'
-				sh 'composer --version'
-				
+				sh 'composer install’
 			}
 		}
 		stage('Test') {
-    steps {
-       script {
-                    // Check PHPUnit version
-                    sh 'php ./vendor/bin/phpunit --version'
-
-                    // Run PHPUnit tests
-                    sh 'php ./vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
-                }
-    }
-}
+			steps {
+                	   sh './vendor/bin/phpunit --log-junit logs/unitreport.xml -c tests/phpunit.xml tests'
+            		}
+		}
 	}
 }
