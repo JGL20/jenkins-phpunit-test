@@ -4,7 +4,7 @@ pipeline {
 		stage('Build') {
 			steps {
 				sh 'apt-get update'
-                       		sh 'apt-get install -y php7.3 php7.3-common php7.3-cli'    
+                       		sh 'apt-get install -y php7.3'    
 			
 
 			  sh 'composer install'
